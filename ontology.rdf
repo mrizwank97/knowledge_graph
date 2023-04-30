@@ -1,0 +1,474 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.sdm.upc.es/lab3/AliakberovaKhalid/ontology/TBOX/rdf-schema#"
+     xml:base="http://www.sdm.upc.es/lab3/AliakberovaKhalid/ontology/TBOX/rdf-schema"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+    <owl:Ontology rdf:about="http://www.sdm.upc.es/lab3/AliakberovaKhalid/ontology/TBOX/rdf-schema#"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.sdm.upc.es/lab3/AliakberovaKhalid/ontology/TBOX/rdf-schema#Accepted_as -->
+
+    <owl:ObjectProperty rdf:about="http://www.sdm.upc.es/lab3/AliakberovaKhalid/ontology/TBOX/rdf-schema#Accepted_as">
+        <rdfs:domain>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.sdm.upc.es/lab3/AliakberovaKhalid/ontology/TBOX/rdf-schema#Accepted_as"/>
+                <owl:someValuesFrom rdf:resource="http://www.sdm.upc.es/lab3/AliakberovaKhalid/ontology/TBOX/rdf-schema#Paper"/>
+            </owl:Restriction>
+        </rdfs:domain>
+        <rdfs:range>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.sdm.upc.es/lab3/AliakberovaKhalid/ontology/TBOX/rdf-schema#Accepted_as"/>
+                <owl:someValuesFrom rdf:resource="http://www.sdm.upc.es/lab3/AliakberovaKhalid/ontology/TBOX/rdf-schema#Publication"/>
+            </owl:Restriction>
+        </rdfs:range>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.sdm.upc.es/lab3/AliakberovaKhalid/ontology/TBOX/rdf-schema#Accepted_or_not -->
+
+    <owl:ObjectProperty rdf:about="http://www.sdm.upc.es/lab3/AliakberovaKhalid/ontology/TBOX/rdf-schema#Accepted_or_not">
+        <rdfs:domain>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.sdm.upc.es/lab3/AliakberovaKhalid/ontology/TBOX/rdf-schema#Accepted_or_not"/>
+                <owl:someValuesFrom rdf:resource="http://www.sdm.upc.es/lab3/AliakberovaKhalid/ontology/TBOX/rdf-schema#Review"/>
+            </owl:Restriction>
+        </rdfs:domain>
+        <rdfs:range>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.sdm.upc.es/lab3/AliakberovaKhalid/ontology/TBOX/rdf-schema#Accepted_or_not"/>
+                <owl:someValuesFrom rdf:resource="http://www.sdm.upc.es/lab3/AliakberovaKhalid/ontology/TBOX/rdf-schema#Decision"/>
+            </owl:Restriction>
+        </rdfs:range>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.sdm.upc.es/lab3/AliakberovaKhalid/ontology/TBOX/rdf-schema#Assigned_by_head -->
+
+    <owl:ObjectProperty rdf:about="http://www.sdm.upc.es/lab3/AliakberovaKhalid/ontology/TBOX/rdf-schema#Assigned_by_head">
+        <rdfs:domain>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.sdm.upc.es/lab3/AliakberovaKhalid/ontology/TBOX/rdf-schema#Assigned_by_head"/>
+                <owl:someValuesFrom rdf:resource="http://www.sdm.upc.es/lab3/AliakberovaKhalid/ontology/TBOX/rdf-schema#Head"/>
+            </owl:Restriction>
+        </rdfs:domain>
+        <rdfs:range>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.sdm.upc.es/lab3/AliakberovaKhalid/ontology/TBOX/rdf-schema#Assigned_by_head"/>
+                <owl:someValuesFrom rdf:resource="http://www.sdm.upc.es/lab3/AliakberovaKhalid/ontology/TBOX/rdf-schema#Reviewer"/>
+            </owl:Restriction>
+        </rdfs:range>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.sdm.upc.es/lab3/AliakberovaKhalid/ontology/TBOX/rdf-schema#Assigned_to -->
+
+    <owl:ObjectProperty rdf:about="http://www.sdm.upc.es/lab3/AliakberovaKhalid/ontology/TBOX/rdf-schema#Assigned_to">
+        <rdfs:domain>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.sdm.upc.es/lab3/AliakberovaKhalid/ontology/TBOX/rdf-schema#Assigned_to"/>
+                <owl:someValuesFrom rdf:resource="http://www.sdm.upc.es/lab3/AliakberovaKhalid/ontology/TBOX/rdf-schema#Reviewer"/>
+            </owl:Restriction>
+        </rdfs:domain>
+        <rdfs:range>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.sdm.upc.es/lab3/AliakberovaKhalid/ontology/TBOX/rdf-schema#Assigned_to"/>
+                <owl:someValuesFrom rdf:resource="http://www.sdm.upc.es/lab3/AliakberovaKhalid/ontology/TBOX/rdf-schema#Paper"/>
+            </owl:Restriction>
+        </rdfs:range>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.sdm.upc.es/lab3/AliakberovaKhalid/ontology/TBOX/rdf-schema#Has_area -->
+
+    <owl:ObjectProperty rdf:about="http://www.sdm.upc.es/lab3/AliakberovaKhalid/ontology/TBOX/rdf-schema#Has_area">
+        <rdfs:domain>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.sdm.upc.es/lab3/AliakberovaKhalid/ontology/TBOX/rdf-schema#Has_area"/>
+                <owl:someValuesFrom rdf:resource="http://www.sdm.upc.es/lab3/AliakberovaKhalid/ontology/TBOX/rdf-schema#Venue"/>
+            </owl:Restriction>
+        </rdfs:domain>
+        <rdfs:range>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.sdm.upc.es/lab3/AliakberovaKhalid/ontology/TBOX/rdf-schema#Has_area"/>
+                <owl:someValuesFrom rdf:resource="http://www.sdm.upc.es/lab3/AliakberovaKhalid/ontology/TBOX/rdf-schema#Area"/>
+            </owl:Restriction>
+        </rdfs:range>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.sdm.upc.es/lab3/AliakberovaKhalid/ontology/TBOX/rdf-schema#Heads_conference -->
+
+    <owl:ObjectProperty rdf:about="http://www.sdm.upc.es/lab3/AliakberovaKhalid/ontology/TBOX/rdf-schema#Heads_conference">
+        <rdfs:domain>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.sdm.upc.es/lab3/AliakberovaKhalid/ontology/TBOX/rdf-schema#Heads_conference"/>
+                <owl:someValuesFrom rdf:resource="http://www.sdm.upc.es/lab3/AliakberovaKhalid/ontology/TBOX/rdf-schema#Chair"/>
+            </owl:Restriction>
+        </rdfs:domain>
+        <rdfs:range>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.sdm.upc.es/lab3/AliakberovaKhalid/ontology/TBOX/rdf-schema#Heads_conference"/>
+                <owl:someValuesFrom rdf:resource="http://www.sdm.upc.es/lab3/AliakberovaKhalid/ontology/TBOX/rdf-schema#Conference"/>
+            </owl:Restriction>
+        </rdfs:range>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.sdm.upc.es/lab3/AliakberovaKhalid/ontology/TBOX/rdf-schema#Heads_journal -->
+
+    <owl:ObjectProperty rdf:about="http://www.sdm.upc.es/lab3/AliakberovaKhalid/ontology/TBOX/rdf-schema#Heads_journal">
+        <rdfs:domain>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.sdm.upc.es/lab3/AliakberovaKhalid/ontology/TBOX/rdf-schema#Heads_journal"/>
+                <owl:someValuesFrom rdf:resource="http://www.sdm.upc.es/lab3/AliakberovaKhalid/ontology/TBOX/rdf-schema#Editor"/>
+            </owl:Restriction>
+        </rdfs:domain>
+        <rdfs:range>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.sdm.upc.es/lab3/AliakberovaKhalid/ontology/TBOX/rdf-schema#Heads_journal"/>
+                <owl:someValuesFrom rdf:resource="http://www.sdm.upc.es/lab3/AliakberovaKhalid/ontology/TBOX/rdf-schema#Journal"/>
+            </owl:Restriction>
+        </rdfs:range>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.sdm.upc.es/lab3/AliakberovaKhalid/ontology/TBOX/rdf-schema#Provide -->
+
+    <owl:ObjectProperty rdf:about="http://www.sdm.upc.es/lab3/AliakberovaKhalid/ontology/TBOX/rdf-schema#Provide">
+        <rdfs:domain>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.sdm.upc.es/lab3/AliakberovaKhalid/ontology/TBOX/rdf-schema#Provide"/>
+                <owl:someValuesFrom rdf:resource="http://www.sdm.upc.es/lab3/AliakberovaKhalid/ontology/TBOX/rdf-schema#Reviewer"/>
+            </owl:Restriction>
+        </rdfs:domain>
+        <rdfs:range>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.sdm.upc.es/lab3/AliakberovaKhalid/ontology/TBOX/rdf-schema#Provide"/>
+                <owl:someValuesFrom rdf:resource="http://www.sdm.upc.es/lab3/AliakberovaKhalid/ontology/TBOX/rdf-schema#Review"/>
+            </owl:Restriction>
+        </rdfs:range>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.sdm.upc.es/lab3/AliakberovaKhalid/ontology/TBOX/rdf-schema#Provides_text -->
+
+    <owl:ObjectProperty rdf:about="http://www.sdm.upc.es/lab3/AliakberovaKhalid/ontology/TBOX/rdf-schema#Provides_text">
+        <rdfs:domain>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.sdm.upc.es/lab3/AliakberovaKhalid/ontology/TBOX/rdf-schema#Provides_text"/>
+                <owl:someValuesFrom rdf:resource="http://www.sdm.upc.es/lab3/AliakberovaKhalid/ontology/TBOX/rdf-schema#Review"/>
+            </owl:Restriction>
+        </rdfs:domain>
+        <rdfs:range>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.sdm.upc.es/lab3/AliakberovaKhalid/ontology/TBOX/rdf-schema#Provides_text"/>
+                <owl:someValuesFrom rdf:resource="http://www.sdm.upc.es/lab3/AliakberovaKhalid/ontology/TBOX/rdf-schema#Decision_Text"/>
+            </owl:Restriction>
+        </rdfs:range>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.sdm.upc.es/lab3/AliakberovaKhalid/ontology/TBOX/rdf-schema#Published_in -->
+
+    <owl:ObjectProperty rdf:about="http://www.sdm.upc.es/lab3/AliakberovaKhalid/ontology/TBOX/rdf-schema#Published_in">
+        <rdfs:domain>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.sdm.upc.es/lab3/AliakberovaKhalid/ontology/TBOX/rdf-schema#Published_in"/>
+                <owl:someValuesFrom rdf:resource="http://www.sdm.upc.es/lab3/AliakberovaKhalid/ontology/TBOX/rdf-schema#Publication"/>
+            </owl:Restriction>
+        </rdfs:domain>
+        <rdfs:range>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.sdm.upc.es/lab3/AliakberovaKhalid/ontology/TBOX/rdf-schema#Published_in"/>
+                <owl:someValuesFrom rdf:resource="http://www.sdm.upc.es/lab3/AliakberovaKhalid/ontology/TBOX/rdf-schema#Year"/>
+            </owl:Restriction>
+        </rdfs:range>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.sdm.upc.es/lab3/AliakberovaKhalid/ontology/TBOX/rdf-schema#Submit -->
+
+    <owl:ObjectProperty rdf:about="http://www.sdm.upc.es/lab3/AliakberovaKhalid/ontology/TBOX/rdf-schema#Submit">
+        <rdfs:domain>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.sdm.upc.es/lab3/AliakberovaKhalid/ontology/TBOX/rdf-schema#Submit"/>
+                <owl:someValuesFrom rdf:resource="http://www.sdm.upc.es/lab3/AliakberovaKhalid/ontology/TBOX/rdf-schema#Author"/>
+            </owl:Restriction>
+        </rdfs:domain>
+        <rdfs:range>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.sdm.upc.es/lab3/AliakberovaKhalid/ontology/TBOX/rdf-schema#Submit"/>
+                <owl:someValuesFrom rdf:resource="http://www.sdm.upc.es/lab3/AliakberovaKhalid/ontology/TBOX/rdf-schema#Paper"/>
+            </owl:Restriction>
+        </rdfs:range>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.sdm.upc.es/lab3/AliakberovaKhalid/ontology/TBOX/rdf-schema#Submitted_to -->
+
+    <owl:ObjectProperty rdf:about="http://www.sdm.upc.es/lab3/AliakberovaKhalid/ontology/TBOX/rdf-schema#Submitted_to">
+        <rdfs:domain>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.sdm.upc.es/lab3/AliakberovaKhalid/ontology/TBOX/rdf-schema#Submitted_to"/>
+                <owl:someValuesFrom rdf:resource="http://www.sdm.upc.es/lab3/AliakberovaKhalid/ontology/TBOX/rdf-schema#Paper"/>
+            </owl:Restriction>
+        </rdfs:domain>
+        <rdfs:range>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.sdm.upc.es/lab3/AliakberovaKhalid/ontology/TBOX/rdf-schema#Submitted_to"/>
+                <owl:someValuesFrom rdf:resource="http://www.sdm.upc.es/lab3/AliakberovaKhalid/ontology/TBOX/rdf-schema#Venue"/>
+            </owl:Restriction>
+        </rdfs:range>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.sdm.upc.es/lab3/AliakberovaKhalid/ontology/TBOX/rdf-schema#Written_in -->
+
+    <owl:ObjectProperty rdf:about="http://www.sdm.upc.es/lab3/AliakberovaKhalid/ontology/TBOX/rdf-schema#Written_in">
+        <rdfs:domain>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.sdm.upc.es/lab3/AliakberovaKhalid/ontology/TBOX/rdf-schema#Written_in"/>
+                <owl:someValuesFrom rdf:resource="http://www.sdm.upc.es/lab3/AliakberovaKhalid/ontology/TBOX/rdf-schema#Paper"/>
+            </owl:Restriction>
+        </rdfs:domain>
+        <rdfs:range>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.sdm.upc.es/lab3/AliakberovaKhalid/ontology/TBOX/rdf-schema#Written_in"/>
+                <owl:someValuesFrom rdf:resource="http://www.sdm.upc.es/lab3/AliakberovaKhalid/ontology/TBOX/rdf-schema#Year"/>
+            </owl:Restriction>
+        </rdfs:range>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.sdm.upc.es/lab3/AliakberovaKhalid/ontology/TBOX/rdf-schema#Area -->
+
+    <owl:Class rdf:about="http://www.sdm.upc.es/lab3/AliakberovaKhalid/ontology/TBOX/rdf-schema#Area"/>
+    
+
+
+    <!-- http://www.sdm.upc.es/lab3/AliakberovaKhalid/ontology/TBOX/rdf-schema#Author -->
+
+    <owl:Class rdf:about="http://www.sdm.upc.es/lab3/AliakberovaKhalid/ontology/TBOX/rdf-schema#Author">
+        <rdfs:subClassOf rdf:resource="http://www.sdm.upc.es/lab3/AliakberovaKhalid/ontology/TBOX/rdf-schema#Person"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.sdm.upc.es/lab3/AliakberovaKhalid/ontology/TBOX/rdf-schema#Chair -->
+
+    <owl:Class rdf:about="http://www.sdm.upc.es/lab3/AliakberovaKhalid/ontology/TBOX/rdf-schema#Chair">
+        <rdfs:subClassOf rdf:resource="http://www.sdm.upc.es/lab3/AliakberovaKhalid/ontology/TBOX/rdf-schema#Head"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.sdm.upc.es/lab3/AliakberovaKhalid/ontology/TBOX/rdf-schema#Conference -->
+
+    <owl:Class rdf:about="http://www.sdm.upc.es/lab3/AliakberovaKhalid/ontology/TBOX/rdf-schema#Conference">
+        <rdfs:subClassOf rdf:resource="http://www.sdm.upc.es/lab3/AliakberovaKhalid/ontology/TBOX/rdf-schema#Venue"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.sdm.upc.es/lab3/AliakberovaKhalid/ontology/TBOX/rdf-schema#Conference_proceeding -->
+
+    <owl:Class rdf:about="http://www.sdm.upc.es/lab3/AliakberovaKhalid/ontology/TBOX/rdf-schema#Conference_proceeding">
+        <rdfs:subClassOf rdf:resource="http://www.sdm.upc.es/lab3/AliakberovaKhalid/ontology/TBOX/rdf-schema#Publication"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.sdm.upc.es/lab3/AliakberovaKhalid/ontology/TBOX/rdf-schema#Decision -->
+
+    <owl:Class rdf:about="http://www.sdm.upc.es/lab3/AliakberovaKhalid/ontology/TBOX/rdf-schema#Decision"/>
+    
+
+
+    <!-- http://www.sdm.upc.es/lab3/AliakberovaKhalid/ontology/TBOX/rdf-schema#Decision_Text -->
+
+    <owl:Class rdf:about="http://www.sdm.upc.es/lab3/AliakberovaKhalid/ontology/TBOX/rdf-schema#Decision_Text"/>
+    
+
+
+    <!-- http://www.sdm.upc.es/lab3/AliakberovaKhalid/ontology/TBOX/rdf-schema#Demo_paper -->
+
+    <owl:Class rdf:about="http://www.sdm.upc.es/lab3/AliakberovaKhalid/ontology/TBOX/rdf-schema#Demo_paper">
+        <rdfs:subClassOf rdf:resource="http://www.sdm.upc.es/lab3/AliakberovaKhalid/ontology/TBOX/rdf-schema#Paper"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.sdm.upc.es/lab3/AliakberovaKhalid/ontology/TBOX/rdf-schema#Editor -->
+
+    <owl:Class rdf:about="http://www.sdm.upc.es/lab3/AliakberovaKhalid/ontology/TBOX/rdf-schema#Editor">
+        <rdfs:subClassOf rdf:resource="http://www.sdm.upc.es/lab3/AliakberovaKhalid/ontology/TBOX/rdf-schema#Head"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.sdm.upc.es/lab3/AliakberovaKhalid/ontology/TBOX/rdf-schema#Expert_group -->
+
+    <owl:Class rdf:about="http://www.sdm.upc.es/lab3/AliakberovaKhalid/ontology/TBOX/rdf-schema#Expert_group">
+        <rdfs:subClassOf rdf:resource="http://www.sdm.upc.es/lab3/AliakberovaKhalid/ontology/TBOX/rdf-schema#Conference"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.sdm.upc.es/lab3/AliakberovaKhalid/ontology/TBOX/rdf-schema#Full_paper -->
+
+    <owl:Class rdf:about="http://www.sdm.upc.es/lab3/AliakberovaKhalid/ontology/TBOX/rdf-schema#Full_paper">
+        <rdfs:subClassOf rdf:resource="http://www.sdm.upc.es/lab3/AliakberovaKhalid/ontology/TBOX/rdf-schema#Paper"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.sdm.upc.es/lab3/AliakberovaKhalid/ontology/TBOX/rdf-schema#Head -->
+
+    <owl:Class rdf:about="http://www.sdm.upc.es/lab3/AliakberovaKhalid/ontology/TBOX/rdf-schema#Head">
+        <rdfs:subClassOf rdf:resource="http://www.sdm.upc.es/lab3/AliakberovaKhalid/ontology/TBOX/rdf-schema#Person"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.sdm.upc.es/lab3/AliakberovaKhalid/ontology/TBOX/rdf-schema#Journal -->
+
+    <owl:Class rdf:about="http://www.sdm.upc.es/lab3/AliakberovaKhalid/ontology/TBOX/rdf-schema#Journal">
+        <rdfs:subClassOf rdf:resource="http://www.sdm.upc.es/lab3/AliakberovaKhalid/ontology/TBOX/rdf-schema#Venue"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.sdm.upc.es/lab3/AliakberovaKhalid/ontology/TBOX/rdf-schema#Journal_volume -->
+
+    <owl:Class rdf:about="http://www.sdm.upc.es/lab3/AliakberovaKhalid/ontology/TBOX/rdf-schema#Journal_volume">
+        <rdfs:subClassOf rdf:resource="http://www.sdm.upc.es/lab3/AliakberovaKhalid/ontology/TBOX/rdf-schema#Publication"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.sdm.upc.es/lab3/AliakberovaKhalid/ontology/TBOX/rdf-schema#Paper -->
+
+    <owl:Class rdf:about="http://www.sdm.upc.es/lab3/AliakberovaKhalid/ontology/TBOX/rdf-schema#Paper"/>
+    
+
+
+    <!-- http://www.sdm.upc.es/lab3/AliakberovaKhalid/ontology/TBOX/rdf-schema#Person -->
+
+    <owl:Class rdf:about="http://www.sdm.upc.es/lab3/AliakberovaKhalid/ontology/TBOX/rdf-schema#Person"/>
+    
+
+
+    <!-- http://www.sdm.upc.es/lab3/AliakberovaKhalid/ontology/TBOX/rdf-schema#Poster -->
+
+    <owl:Class rdf:about="http://www.sdm.upc.es/lab3/AliakberovaKhalid/ontology/TBOX/rdf-schema#Poster">
+        <rdfs:subClassOf rdf:resource="http://www.sdm.upc.es/lab3/AliakberovaKhalid/ontology/TBOX/rdf-schema#Paper"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.sdm.upc.es/lab3/AliakberovaKhalid/ontology/TBOX/rdf-schema#Publication -->
+
+    <owl:Class rdf:about="http://www.sdm.upc.es/lab3/AliakberovaKhalid/ontology/TBOX/rdf-schema#Publication"/>
+    
+
+
+    <!-- http://www.sdm.upc.es/lab3/AliakberovaKhalid/ontology/TBOX/rdf-schema#Regular_conf -->
+
+    <owl:Class rdf:about="http://www.sdm.upc.es/lab3/AliakberovaKhalid/ontology/TBOX/rdf-schema#Regular_conf">
+        <rdfs:subClassOf rdf:resource="http://www.sdm.upc.es/lab3/AliakberovaKhalid/ontology/TBOX/rdf-schema#Conference"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.sdm.upc.es/lab3/AliakberovaKhalid/ontology/TBOX/rdf-schema#Review -->
+
+    <owl:Class rdf:about="http://www.sdm.upc.es/lab3/AliakberovaKhalid/ontology/TBOX/rdf-schema#Review"/>
+    
+
+
+    <!-- http://www.sdm.upc.es/lab3/AliakberovaKhalid/ontology/TBOX/rdf-schema#Reviewer -->
+
+    <owl:Class rdf:about="http://www.sdm.upc.es/lab3/AliakberovaKhalid/ontology/TBOX/rdf-schema#Reviewer">
+        <rdfs:subClassOf rdf:resource="http://www.sdm.upc.es/lab3/AliakberovaKhalid/ontology/TBOX/rdf-schema#Person"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.sdm.upc.es/lab3/AliakberovaKhalid/ontology/TBOX/rdf-schema#Short_paper -->
+
+    <owl:Class rdf:about="http://www.sdm.upc.es/lab3/AliakberovaKhalid/ontology/TBOX/rdf-schema#Short_paper">
+        <rdfs:subClassOf rdf:resource="http://www.sdm.upc.es/lab3/AliakberovaKhalid/ontology/TBOX/rdf-schema#Paper"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.sdm.upc.es/lab3/AliakberovaKhalid/ontology/TBOX/rdf-schema#Symphosium -->
+
+    <owl:Class rdf:about="http://www.sdm.upc.es/lab3/AliakberovaKhalid/ontology/TBOX/rdf-schema#Symphosium">
+        <rdfs:subClassOf rdf:resource="http://www.sdm.upc.es/lab3/AliakberovaKhalid/ontology/TBOX/rdf-schema#Conference"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.sdm.upc.es/lab3/AliakberovaKhalid/ontology/TBOX/rdf-schema#Venue -->
+
+    <owl:Class rdf:about="http://www.sdm.upc.es/lab3/AliakberovaKhalid/ontology/TBOX/rdf-schema#Venue"/>
+    
+
+
+    <!-- http://www.sdm.upc.es/lab3/AliakberovaKhalid/ontology/TBOX/rdf-schema#Workshop -->
+
+    <owl:Class rdf:about="http://www.sdm.upc.es/lab3/AliakberovaKhalid/ontology/TBOX/rdf-schema#Workshop">
+        <rdfs:subClassOf rdf:resource="http://www.sdm.upc.es/lab3/AliakberovaKhalid/ontology/TBOX/rdf-schema#Conference"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.sdm.upc.es/lab3/AliakberovaKhalid/ontology/TBOX/rdf-schema#Year -->
+
+    <owl:Class rdf:about="http://www.sdm.upc.es/lab3/AliakberovaKhalid/ontology/TBOX/rdf-schema#Year"/>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.25.2023-02-15T19:15:49Z) https://github.com/owlcs/owlapi -->
+
