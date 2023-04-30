@@ -1,4 +1,4 @@
-package com.sdm.rdfs.commons;
+package com.sdm.rdfs.Commons;
 
 public class Utils {
 
