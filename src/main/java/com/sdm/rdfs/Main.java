@@ -1,6 +1,6 @@
 package com.sdm.rdfs;
 
-import java.io.IOException;
+import java.lang.Exception;
 import com.sdm.rdfs.Ontology.ABOX;
 
 // Press ⇧ twice to open the Search Everywhere dialog and type `show whitespaces`,
@@ -10,10 +10,10 @@ public class Main {
 
         try {
 
-            ABOX.buildAndSaveAbox();
+            ABOX.buildAndSaveABOX();
             System.out.println("Model Saved Successfully");
 
-        } catch (IOException e) {
+        } catch (Exception e) {
             throw new RuntimeException(e);
         }
 
