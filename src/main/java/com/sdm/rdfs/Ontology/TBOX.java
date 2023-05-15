@@ -1,23 +1,24 @@
 package com.sdm.rdfs.Ontology;
 
 import com.sdm.rdfs.Commons.Constants;
-import org.apache.jena.ontology.OntClass;
-import org.apache.jena.ontology.OntModel;
-import org.apache.jena.ontology.OntModelSpec;
-import org.apache.jena.ontology.OntProperty;
+import org.apache.jena.ontology.*;
+import org.apache.jena.rdf.model.InfModel;
 import org.apache.jena.rdf.model.ModelFactory;
+import org.apache.jena.reasoner.Reasoner;
+import org.apache.jena.reasoner.ReasonerRegistry;
+import org.apache.jena.vocabulary.RDFS;
+import org.apache.jena.vocabulary.XSD;
 
 import java.io.FileOutputStream;
-import java.io.IOException;
 
 
 public class TBOX {
 
-    public static void createOntlogyTBOX() throws IOException {
+    public static void createOntlogyTBOX() throws Exception {
 
-        // Classes ontology
+        OntModel model = ModelFactory.createOntologyModel(OntModelSpec.RDFS_MEM_RDFS_INF);
 
-        OntModel model = ModelFactory.createOntologyModel( OntModelSpec.RDFS_MEM_RDFS_INF );
+        //Class Ontology
 
         OntClass person = model.createClass(Constants.BASE_URI.concat("Person"));
         OntClass author = model.createClass(Constants.BASE_URI.concat("Author"));
@@ -31,31 +32,30 @@ public class TBOX {
         person.addSubClass( reviewer );
 
         OntClass paper = model.createClass(Constants.BASE_URI.concat("Paper"));
-        OntClass full_paper  = model.createClass(Constants.BASE_URI.concat("Full_paper"));
+        OntClass fullPaper  = model.createClass(Constants.BASE_URI.concat("Full_paper"));
         OntClass poster = model.createClass(Constants.BASE_URI.concat("Poster"));
-        OntClass demo_paper = model.createClass(Constants.BASE_URI.concat("Demo_paper"));
-        OntClass short_paper = model.createClass(Constants.BASE_URI.concat("Short_paper"));
+        OntClass demoPaper = model.createClass(Constants.BASE_URI.concat("Demo_paper"));
+        OntClass shortPaper = model.createClass(Constants.BASE_URI.concat("Short_paper"));
 
-        paper.addSubClass( full_paper );
+        paper.addSubClass( fullPaper );
         paper.addSubClass( poster );
-        paper.addSubClass( demo_paper );
-        paper.addSubClass( short_paper );
+        paper.addSubClass( demoPaper );
+        paper.addSubClass( shortPaper );
 
         OntClass venue = model.createClass(Constants.BASE_URI.concat("Venue"));
         OntClass journal  = model.createClass(Constants.BASE_URI.concat("Journal"));
         OntClass conference = model.createClass(Constants.BASE_URI.concat("Conference"));
         OntClass workshop = model.createClass(Constants.BASE_URI.concat("Workshop"));
         OntClass symposium  = model.createClass(Constants.BASE_URI.concat("Symposium"));
-        OntClass expert_group = model.createClass(Constants.BASE_URI.concat("Expert_group"));
-        OntClass regular_conf = model.createClass(Constants.BASE_URI.concat("Regular_conf"));
+        OntClass expertGroup = model.createClass(Constants.BASE_URI.concat("Expert_group"));
+        OntClass regularConf = model.createClass(Constants.BASE_URI.concat("Regular_conf"));
 
         venue.addSubClass( journal );
         venue.addSubClass( conference );
         conference.addSubClass( workshop );
         conference.addSubClass( symposium );
-        conference.addSubClass( expert_group );
-        conference.addSubClass( regular_conf );
-
+        conference.addSubClass( expertGroup );
+        conference.addSubClass( regularConf );
 
         OntClass review = model.createClass(Constants.BASE_URI.concat("Review"));
         OntClass publication  = model.createClass(Constants.BASE_URI.concat("Publication"));
@@ -68,45 +68,50 @@ public class TBOX {
         writes.addRange( paper );
         writes.addLabel("Author writes paper", "en");
 
-        OntProperty has_area = model.createOntProperty( Constants.BASE_URI.concat("Has_area") );
-        has_area.addDomain( paper );
-        has_area.addRange( area );
-        has_area.addLabel("Paper has area", "en");
+        OntProperty hasArea = model.createOntProperty( Constants.BASE_URI.concat("Has_area") );
+        hasArea.addDomain( paper );
+        hasArea.addRange( area );
+        hasArea.addLabel("Paper has area", "en");
 
-        OntProperty submitted_to = model.createOntProperty( Constants.BASE_URI.concat("Submitted_to") );
-        submitted_to.addDomain( paper );
-        submitted_to.addRange( venue );
-        submitted_to.addLabel("Paper submitted to a venue", "en");
+        OntProperty relatedTo = model.createOntProperty( Constants.BASE_URI.concat("Related_to") );
+        relatedTo.addDomain( venue );
+        relatedTo.addRange( area );
+        relatedTo.addLabel("Venue related to area", "en");
 
-        OntProperty accepted_as = model.createOntProperty( Constants.BASE_URI.concat("Accepted_as") );
-        accepted_as.addDomain( paper );
-        accepted_as.addRange( publication );
-        accepted_as.addLabel("Paper accepted as a publication", "en");
+        OntProperty submittedTo = model.createOntProperty( Constants.BASE_URI.concat("Submitted_to") );
+        submittedTo.addDomain( paper );
+        submittedTo.addRange( venue );
+        submittedTo.addLabel("Paper submitted to a venue", "en");
 
-        OntProperty belongs_to = model.createOntProperty( Constants.BASE_URI.concat("Belongs_to") );
-        belongs_to.addDomain( publication );
-        belongs_to.addRange( venue );
-        belongs_to.addLabel("Publication belongs to a venue", "en");
+        OntProperty acceptedAs = model.createOntProperty( Constants.BASE_URI.concat("Accepted_as") );
+        acceptedAs.addDomain( paper );
+        acceptedAs.addRange( publication );
+        acceptedAs.addLabel("Paper accepted as a publication", "en");
 
-        OntProperty heads_journal = model.createOntProperty( Constants.BASE_URI.concat("Heads_journal") );
-        heads_journal.addDomain( editor );
-        heads_journal.addRange( journal );
-        heads_journal.addLabel("Editor heads a journal", "en");
+        OntProperty belongsTo = model.createOntProperty( Constants.BASE_URI.concat("Belongs_to") );
+        belongsTo.addDomain( publication );
+        belongsTo.addRange( venue );
+        belongsTo.addLabel("Publication belongs to a venue", "en");
 
-        OntProperty heads_conference = model.createOntProperty( Constants.BASE_URI.concat("Heads_conference") );
-        heads_conference.addDomain( chair );
-        heads_conference.addRange( conference );
-        heads_conference.addLabel("Chair heads a conference", "en");
+        OntProperty headsJournal = model.createOntProperty( Constants.BASE_URI.concat("Heads_journal") );
+        headsJournal.addDomain( editor );
+        headsJournal.addRange( journal );
+        headsJournal.addLabel("Editor heads a journal", "en");
 
-        OntProperty assigned_by_editor = model.createOntProperty( Constants.BASE_URI.concat("Assigned_by_editor") );
-        assigned_by_editor.addDomain( editor );
-        assigned_by_editor.addRange( reviewer );
-        assigned_by_editor.addLabel("Editor assigns reviewers", "en");
+        OntProperty headsConference = model.createOntProperty( Constants.BASE_URI.concat("Heads_conference") );
+        headsConference.addDomain( chair );
+        headsConference.addRange( conference );
+        headsConference.addLabel("Chair heads a conference", "en");
 
-        OntProperty assigned_by_chair = model.createOntProperty( Constants.BASE_URI.concat("Assigned_by_chair") );
-        assigned_by_chair.addDomain( chair );
-        assigned_by_chair.addRange( reviewer );
-        assigned_by_chair.addLabel("Chair assigns reviewers", "en");
+        OntProperty assignedByEditor = model.createOntProperty( Constants.BASE_URI.concat("Assigned_by_editor") );
+        assignedByEditor.addDomain( editor );
+        assignedByEditor.addRange( reviewer );
+        assignedByEditor.addLabel("Reviewer Assigned by Editor", "en");
+
+        OntProperty assignedByChair = model.createOntProperty( Constants.BASE_URI.concat("Assigned_by_chair") );
+        assignedByChair.addDomain( chair );
+        assignedByChair.addRange( reviewer );
+        assignedByChair.addLabel("Reviewer Assigned by Editor", "en");
 
         OntProperty provides = model.createOntProperty( Constants.BASE_URI.concat("Provides") );
         provides.addDomain( reviewer );
@@ -116,17 +121,85 @@ public class TBOX {
         OntProperty approves = model.createOntProperty( Constants.BASE_URI.concat("Approves") );
         approves.addDomain( review );
         approves.addRange( paper );
-        approves.addLabel("Paper is approved by reviews", "en");
+        approves.addLabel("Review approves the paper", "en");
 
-        OntProperty assigned_to = model.createOntProperty( Constants.BASE_URI.concat("Assigned_to") );
-        assigned_to.addDomain( reviewer );
-        assigned_to.addRange( paper );
-        assigned_to.addLabel("Reviewer is assigned to a paper", "en");
+        OntProperty assignedTo = model.createOntProperty( Constants.BASE_URI.concat("Assigned_to") );
+        assignedTo.addDomain( reviewer );
+        assignedTo.addRange( paper );
+        assignedTo.addLabel("Reviewer is assigned to a paper", "en");
 
+        //DataType properties ontology aka class attributes
+        OntProperty paperTitle = model.createOntProperty(Constants.BASE_URI.concat("paper_title"));
+        paperTitle.addDomain(paper);
+        paperTitle.addRange(XSD.xstring);
+        paperTitle.addLabel("Paper has a title", "en");
 
+        OntProperty paperAbstract = model.createOntProperty(Constants.BASE_URI.concat("paper_abstract"));
+        paperAbstract.addDomain(paper);
+        paperAbstract.addRange(XSD.xstring);
+        paperAbstract.addLabel("Paper has a title", "en");
 
-        FileOutputStream writerStream = new FileOutputStream(Constants.TBOX_MODEL_PATH );
-        model.write(writerStream, "RDF/XML");
-        writerStream.close();
+        OntProperty paperYear = model.createOntProperty(Constants.BASE_URI.concat("paper_year"));
+        paperYear.addDomain(paper);
+        paperYear.addRange(XSD.xstring);
+        paperYear.addLabel("Paper written in year", "en");
+
+        OntProperty areaName = model.createOntProperty(Constants.BASE_URI.concat("area_name"));
+        areaName.addDomain(area);
+        areaName.addRange(XSD.xstring);
+        areaName.addLabel("Area has a name", "en");
+
+        OntProperty venueName = model.createOntProperty(Constants.BASE_URI.concat("venue_name"));
+        venueName.addDomain(venue);
+        venueName.addRange(XSD.xstring);
+        venueName.addLabel("Venue has a name", "en");
+
+        OntProperty venueCity = model.createOntProperty(Constants.BASE_URI.concat("venue_city"));
+        venueCity.addDomain(venue);
+        venueCity.addRange(XSD.xstring);
+        venueCity.addLabel("Venue organized in a city", "en");
+
+        OntProperty publicationName = model.createOntProperty(Constants.BASE_URI.concat("publication_name"));
+        publicationName.addDomain(publication);
+        publicationName.addRange(XSD.xstring);
+        publicationName.addLabel("Publication has a name", "en");
+
+        OntProperty publicationType = model.createOntProperty(Constants.BASE_URI.concat("publication_type"));
+        publicationType.addDomain(publication);
+        publicationType.addRange(XSD.xstring);
+        publicationType.addLabel("Publication has a type", "en");
+
+        OntProperty publicationYear = model.createOntProperty(Constants.BASE_URI.concat("publication_year"));
+        publicationYear.addDomain(publication);
+        publicationYear.addRange(XSD.xstring);
+        publicationYear.addLabel("Publication has a type", "en");
+
+        OntProperty personName = model.createOntProperty(Constants.BASE_URI.concat("person_name"));
+        personName.addDomain(person);
+        personName.addRange(XSD.xstring);
+        personName.addLabel("Person has a name", "en");
+
+        OntProperty decision = model.createOntProperty(Constants.BASE_URI.concat("decision"));
+        decision.addDomain(review);
+        decision.addRange(XSD.xstring);
+        decision.addLabel("Review provides a decision", "en");
+
+        OntProperty reviewText = model.createOntProperty(Constants.BASE_URI.concat("review_text"));
+        reviewText.addDomain(review);
+        reviewText.addRange(XSD.xstring);
+        reviewText.addLabel("Review has comments", "en");
+
+        //save ontology if valid
+        Reasoner reasoner = ReasonerRegistry.getOWLReasoner();
+        reasoner.bindSchema(model);
+        InfModel infModel = ModelFactory.createInfModel(reasoner, model);
+        if(infModel.validate().isValid()){
+            FileOutputStream writerStream = new FileOutputStream(Constants.TBOX_MODEL_PATH);
+            model.write(writerStream, "RDF/XML");
+            writerStream.close();
+        }
+        else{
+            throw new Exception("Invalid Ontology");
+        }
     }
 }

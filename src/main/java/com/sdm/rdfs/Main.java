@@ -11,8 +11,8 @@ public class Main {
 
         try {
             TBOX.createOntlogyTBOX();
-            ABOX.buildAndSaveABOX();
-            System.out.println("Model Saved Successfully");
+            System.out.println("TBox Model Saved Successfully");
+            ABOX.createOntlogyABOX();
 
         } catch (Exception e) {
             throw new RuntimeException(e);

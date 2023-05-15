@@ -1,0 +1,184 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
+  <rdfs:Class rdf:about="http://www.sdm.upc.es/#Demo_paper">
+    <rdfs:subClassOf>
+      <rdfs:Class rdf:about="http://www.sdm.upc.es/#Paper"/>
+    </rdfs:subClassOf>
+  </rdfs:Class>
+  <rdfs:Class rdf:about="http://www.sdm.upc.es/#Full_paper">
+    <rdfs:subClassOf rdf:resource="http://www.sdm.upc.es/#Paper"/>
+  </rdfs:Class>
+  <rdfs:Class rdf:about="http://www.sdm.upc.es/#Workshop">
+    <rdfs:subClassOf>
+      <rdfs:Class rdf:about="http://www.sdm.upc.es/#Conference"/>
+    </rdfs:subClassOf>
+  </rdfs:Class>
+  <rdfs:Class rdf:about="http://www.sdm.upc.es/#Short_paper">
+    <rdfs:subClassOf rdf:resource="http://www.sdm.upc.es/#Paper"/>
+  </rdfs:Class>
+  <rdfs:Class rdf:about="http://www.sdm.upc.es/#Review"/>
+  <rdfs:Class rdf:about="http://www.sdm.upc.es/#Chair">
+    <rdfs:subClassOf>
+      <rdfs:Class rdf:about="http://www.sdm.upc.es/#Person"/>
+    </rdfs:subClassOf>
+  </rdfs:Class>
+  <rdfs:Class rdf:about="http://www.sdm.upc.es/#Conference">
+    <rdfs:subClassOf>
+      <rdfs:Class rdf:about="http://www.sdm.upc.es/#Venue"/>
+    </rdfs:subClassOf>
+  </rdfs:Class>
+  <rdfs:Class rdf:about="http://www.sdm.upc.es/#Regular_conf">
+    <rdfs:subClassOf rdf:resource="http://www.sdm.upc.es/#Conference"/>
+  </rdfs:Class>
+  <rdfs:Class rdf:about="http://www.sdm.upc.es/#Area"/>
+  <rdfs:Class rdf:about="http://www.sdm.upc.es/#Poster">
+    <rdfs:subClassOf rdf:resource="http://www.sdm.upc.es/#Paper"/>
+  </rdfs:Class>
+  <rdfs:Class rdf:about="http://www.sdm.upc.es/#Symposium">
+    <rdfs:subClassOf rdf:resource="http://www.sdm.upc.es/#Conference"/>
+  </rdfs:Class>
+  <rdfs:Class rdf:about="http://www.sdm.upc.es/#Journal">
+    <rdfs:subClassOf rdf:resource="http://www.sdm.upc.es/#Venue"/>
+  </rdfs:Class>
+  <rdfs:Class rdf:about="http://www.sdm.upc.es/#Author">
+    <rdfs:subClassOf rdf:resource="http://www.sdm.upc.es/#Person"/>
+  </rdfs:Class>
+  <rdfs:Class rdf:about="http://www.sdm.upc.es/#Reviewer">
+    <rdfs:subClassOf rdf:resource="http://www.sdm.upc.es/#Person"/>
+  </rdfs:Class>
+  <rdfs:Class rdf:about="http://www.sdm.upc.es/#Publication"/>
+  <rdfs:Class rdf:about="http://www.sdm.upc.es/#Editor">
+    <rdfs:subClassOf rdf:resource="http://www.sdm.upc.es/#Person"/>
+  </rdfs:Class>
+  <rdfs:Class rdf:about="http://www.sdm.upc.es/#Expert_group">
+    <rdfs:subClassOf rdf:resource="http://www.sdm.upc.es/#Conference"/>
+  </rdfs:Class>
+  <rdf:Property rdf:about="http://www.sdm.upc.es/#Belongs_to">
+    <rdfs:label xml:lang="en">Publication belongs to a venue</rdfs:label>
+    <rdfs:range rdf:resource="http://www.sdm.upc.es/#Venue"/>
+    <rdfs:domain rdf:resource="http://www.sdm.upc.es/#Publication"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://www.sdm.upc.es/#area_name">
+    <rdfs:label xml:lang="en">Area has a name</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="http://www.sdm.upc.es/#Area"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://www.sdm.upc.es/#publication_name">
+    <rdfs:label xml:lang="en">Publication has a name</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="http://www.sdm.upc.es/#Publication"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://www.sdm.upc.es/#Assigned_to">
+    <rdfs:label xml:lang="en">Reviewer is assigned to a paper</rdfs:label>
+    <rdfs:range rdf:resource="http://www.sdm.upc.es/#Paper"/>
+    <rdfs:domain rdf:resource="http://www.sdm.upc.es/#Reviewer"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://www.sdm.upc.es/#Assigned_by_chair">
+    <rdfs:label xml:lang="en">Reviewer Assigned by Editor</rdfs:label>
+    <rdfs:range rdf:resource="http://www.sdm.upc.es/#Reviewer"/>
+    <rdfs:domain rdf:resource="http://www.sdm.upc.es/#Chair"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://www.sdm.upc.es/#paper_abstract">
+    <rdfs:label xml:lang="en">Paper has a title</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="http://www.sdm.upc.es/#Paper"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://www.sdm.upc.es/#Provides">
+    <rdfs:label xml:lang="en">Reviewer provides a review</rdfs:label>
+    <rdfs:range rdf:resource="http://www.sdm.upc.es/#Review"/>
+    <rdfs:domain rdf:resource="http://www.sdm.upc.es/#Reviewer"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://www.sdm.upc.es/#venue_name">
+    <rdfs:label xml:lang="en">Venue has a name</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="http://www.sdm.upc.es/#Venue"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://www.sdm.upc.es/#Related_to">
+    <rdfs:label xml:lang="en">Venue related to area</rdfs:label>
+    <rdfs:range rdf:resource="http://www.sdm.upc.es/#Area"/>
+    <rdfs:domain rdf:resource="http://www.sdm.upc.es/#Venue"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://www.sdm.upc.es/#Writes">
+    <rdfs:label xml:lang="en">Author writes paper</rdfs:label>
+    <rdfs:range rdf:resource="http://www.sdm.upc.es/#Paper"/>
+    <rdfs:domain rdf:resource="http://www.sdm.upc.es/#Author"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://www.sdm.upc.es/#decision">
+    <rdfs:label xml:lang="en">Review provides a decision</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="http://www.sdm.upc.es/#Review"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://www.sdm.upc.es/#person_name">
+    <rdfs:label xml:lang="en">Person has a name</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="http://www.sdm.upc.es/#Person"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://www.sdm.upc.es/#Has_area">
+    <rdfs:label xml:lang="en">Paper has area</rdfs:label>
+    <rdfs:range rdf:resource="http://www.sdm.upc.es/#Area"/>
+    <rdfs:domain rdf:resource="http://www.sdm.upc.es/#Paper"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://www.sdm.upc.es/#publication_year">
+    <rdfs:label xml:lang="en">Publication has a type</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="http://www.sdm.upc.es/#Publication"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://www.sdm.upc.es/#venue_city">
+    <rdfs:label xml:lang="en">Venue organized in a city</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="http://www.sdm.upc.es/#Venue"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://www.sdm.upc.es/#Assigned_by_editor">
+    <rdfs:label xml:lang="en">Reviewer Assigned by Editor</rdfs:label>
+    <rdfs:range rdf:resource="http://www.sdm.upc.es/#Reviewer"/>
+    <rdfs:domain rdf:resource="http://www.sdm.upc.es/#Editor"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://www.sdm.upc.es/#Accepted_as">
+    <rdfs:label xml:lang="en">Paper accepted as a publication</rdfs:label>
+    <rdfs:range rdf:resource="http://www.sdm.upc.es/#Publication"/>
+    <rdfs:domain rdf:resource="http://www.sdm.upc.es/#Paper"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://www.sdm.upc.es/#publication_type">
+    <rdfs:label xml:lang="en">Publication has a type</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="http://www.sdm.upc.es/#Publication"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://www.sdm.upc.es/#Heads_conference">
+    <rdfs:label xml:lang="en">Chair heads a conference</rdfs:label>
+    <rdfs:range rdf:resource="http://www.sdm.upc.es/#Conference"/>
+    <rdfs:domain rdf:resource="http://www.sdm.upc.es/#Chair"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://www.sdm.upc.es/#paper_title">
+    <rdfs:label xml:lang="en">Paper has a title</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="http://www.sdm.upc.es/#Paper"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://www.sdm.upc.es/#Submitted_to">
+    <rdfs:label xml:lang="en">Paper submitted to a venue</rdfs:label>
+    <rdfs:range rdf:resource="http://www.sdm.upc.es/#Venue"/>
+    <rdfs:domain rdf:resource="http://www.sdm.upc.es/#Paper"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://www.sdm.upc.es/#Heads_journal">
+    <rdfs:label xml:lang="en">Editor heads a journal</rdfs:label>
+    <rdfs:range rdf:resource="http://www.sdm.upc.es/#Journal"/>
+    <rdfs:domain rdf:resource="http://www.sdm.upc.es/#Editor"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://www.sdm.upc.es/#Approves">
+    <rdfs:label xml:lang="en">Review approves the paper</rdfs:label>
+    <rdfs:range rdf:resource="http://www.sdm.upc.es/#Paper"/>
+    <rdfs:domain rdf:resource="http://www.sdm.upc.es/#Review"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://www.sdm.upc.es/#paper_year">
+    <rdfs:label xml:lang="en">Paper written in year</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="http://www.sdm.upc.es/#Paper"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://www.sdm.upc.es/#review_text">
+    <rdfs:label xml:lang="en">Review has comments</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="http://www.sdm.upc.es/#Review"/>
+  </rdf:Property>
+</rdf:RDF>
