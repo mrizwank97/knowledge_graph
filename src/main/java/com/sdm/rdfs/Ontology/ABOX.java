@@ -1,23 +1,20 @@
 package com.sdm.rdfs.Ontology;
 
+import java.io.FileReader;
+import java.net.URLEncoder;
+import java.io.BufferedReader;
+import java.io.FileOutputStream;
+import org.apache.jena.ontology.*;
 import com.sdm.rdfs.Commons.Utils;
 import com.sdm.rdfs.Commons.Constants;
+import org.apache.jena.rdf.model.Model;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVRecord;
-import org.apache.jena.ontology.*;
-import org.apache.jena.rdf.model.InfModel;
-import org.apache.jena.rdf.model.Model;
-import org.apache.jena.rdf.model.ModelFactory;
 import org.apache.jena.reasoner.Reasoner;
+import org.apache.jena.rdf.model.InfModel;
+import org.apache.jena.rdf.model.ModelFactory;
 import org.apache.jena.reasoner.ReasonerRegistry;
-
-import java.io.BufferedReader;
-import java.io.FileOutputStream;
-import java.io.FileReader;
-import java.io.IOException;
-import java.net.URLEncoder;
-import java.util.Arrays;
 
 public class ABOX {
 
@@ -225,6 +222,5 @@ public class ABOX {
             throw new Exception("Invalid Ontology");
         }
         System.out.println("ABOX model validated");
-
     }
 }

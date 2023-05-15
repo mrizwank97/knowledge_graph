@@ -1,16 +1,13 @@
 package com.sdm.rdfs.Ontology;
 
-import com.sdm.rdfs.Commons.Constants;
+import java.io.FileOutputStream;
 import org.apache.jena.ontology.*;
+import com.sdm.rdfs.Commons.Constants;
+import org.apache.jena.vocabulary.XSD;
+import org.apache.jena.reasoner.Reasoner;
 import org.apache.jena.rdf.model.InfModel;
 import org.apache.jena.rdf.model.ModelFactory;
-import org.apache.jena.reasoner.Reasoner;
 import org.apache.jena.reasoner.ReasonerRegistry;
-import org.apache.jena.vocabulary.RDFS;
-import org.apache.jena.vocabulary.XSD;
-
-import java.io.FileOutputStream;
-
 
 public class TBOX {
 
@@ -19,7 +16,6 @@ public class TBOX {
         OntModel model = ModelFactory.createOntologyModel(OntModelSpec.RDFS_MEM_RDFS_INF);
 
         //Class Ontology
-
         OntClass person = model.createClass(Constants.BASE_URI.concat("Person"));
         OntClass author = model.createClass(Constants.BASE_URI.concat("Author"));
         OntClass chair = model.createClass(Constants.BASE_URI.concat("Chair"));
@@ -67,7 +63,6 @@ public class TBOX {
         publication.addSubClass(jourVolume);
 
         // Properties ontology
-
         OntProperty writes = model.createOntProperty( Constants.BASE_URI.concat("Writes") );
         writes.addDomain( author );
         writes.addRange( paper );
