@@ -50,16 +50,21 @@ public class TBOX {
         OntClass expertGroup = model.createClass(Constants.BASE_URI.concat("Expert_group"));
         OntClass regularConf = model.createClass(Constants.BASE_URI.concat("Regular_conf"));
 
-        venue.addSubClass( journal );
-        venue.addSubClass( conference );
-        conference.addSubClass( workshop );
-        conference.addSubClass( symposium );
-        conference.addSubClass( expertGroup );
-        conference.addSubClass( regularConf );
+        venue.addSubClass(journal);
+        venue.addSubClass(conference);
+        conference.addSubClass(workshop);
+        conference.addSubClass(symposium);
+        conference.addSubClass(expertGroup);
+        conference.addSubClass(regularConf);
 
         OntClass review = model.createClass(Constants.BASE_URI.concat("Review"));
         OntClass publication  = model.createClass(Constants.BASE_URI.concat("Publication"));
+        OntClass confProceeding  = model.createClass(Constants.BASE_URI.concat("Conference_proceeding"));
+        OntClass jourVolume  = model.createClass(Constants.BASE_URI.concat("Journal_volume"));
         OntClass area = model.createClass(Constants.BASE_URI.concat("Area"));
+
+        publication.addSubClass(confProceeding);
+        publication.addSubClass(jourVolume);
 
         // Properties ontology
 
@@ -88,10 +93,15 @@ public class TBOX {
         acceptedAs.addRange( publication );
         acceptedAs.addLabel("Paper accepted as a publication", "en");
 
-        OntProperty belongsTo = model.createOntProperty( Constants.BASE_URI.concat("Belongs_to") );
-        belongsTo.addDomain( publication );
-        belongsTo.addRange( venue );
-        belongsTo.addLabel("Publication belongs to a venue", "en");
+        OntProperty belongsToConf = model.createOntProperty( Constants.BASE_URI.concat("Belongs_to_conf") );
+        belongsToConf.addDomain( confProceeding );
+        belongsToConf.addRange( conference );
+        belongsToConf.addLabel("Conference Proceeding belongs to a conference", "en");
+
+        OntProperty belongsToJour = model.createOntProperty( Constants.BASE_URI.concat("Belongs_to_jour") );
+        belongsToJour.addDomain( jourVolume );
+        belongsToJour.addRange( journal );
+        belongsToJour.addLabel("Journal Volume belongs to a journal", "en");
 
         OntProperty headsJournal = model.createOntProperty( Constants.BASE_URI.concat("Heads_journal") );
         headsJournal.addDomain( editor );
@@ -163,11 +173,7 @@ public class TBOX {
         publicationName.addDomain(publication);
         publicationName.addRange(XSD.xstring);
         publicationName.addLabel("Publication has a name", "en");
-
-        OntProperty publicationType = model.createOntProperty(Constants.BASE_URI.concat("publication_type"));
-        publicationType.addDomain(publication);
-        publicationType.addRange(XSD.xstring);
-        publicationType.addLabel("Publication has a type", "en");
+        publicationName.addLabel("Publication has a name", "en");
 
         OntProperty publicationYear = model.createOntProperty(Constants.BASE_URI.concat("publication_year"));
         publicationYear.addDomain(publication);

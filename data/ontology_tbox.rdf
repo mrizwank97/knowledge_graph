@@ -37,6 +37,11 @@
   <rdfs:Class rdf:about="http://www.sdm.upc.es/#Poster">
     <rdfs:subClassOf rdf:resource="http://www.sdm.upc.es/#Paper"/>
   </rdfs:Class>
+  <rdfs:Class rdf:about="http://www.sdm.upc.es/#Journal_volume">
+    <rdfs:subClassOf>
+      <rdfs:Class rdf:about="http://www.sdm.upc.es/#Publication"/>
+    </rdfs:subClassOf>
+  </rdfs:Class>
   <rdfs:Class rdf:about="http://www.sdm.upc.es/#Symposium">
     <rdfs:subClassOf rdf:resource="http://www.sdm.upc.es/#Conference"/>
   </rdfs:Class>
@@ -49,17 +54,19 @@
   <rdfs:Class rdf:about="http://www.sdm.upc.es/#Reviewer">
     <rdfs:subClassOf rdf:resource="http://www.sdm.upc.es/#Person"/>
   </rdfs:Class>
-  <rdfs:Class rdf:about="http://www.sdm.upc.es/#Publication"/>
   <rdfs:Class rdf:about="http://www.sdm.upc.es/#Editor">
     <rdfs:subClassOf rdf:resource="http://www.sdm.upc.es/#Person"/>
+  </rdfs:Class>
+  <rdfs:Class rdf:about="http://www.sdm.upc.es/#Conference_proceeding">
+    <rdfs:subClassOf rdf:resource="http://www.sdm.upc.es/#Publication"/>
   </rdfs:Class>
   <rdfs:Class rdf:about="http://www.sdm.upc.es/#Expert_group">
     <rdfs:subClassOf rdf:resource="http://www.sdm.upc.es/#Conference"/>
   </rdfs:Class>
-  <rdf:Property rdf:about="http://www.sdm.upc.es/#Belongs_to">
-    <rdfs:label xml:lang="en">Publication belongs to a venue</rdfs:label>
-    <rdfs:range rdf:resource="http://www.sdm.upc.es/#Venue"/>
-    <rdfs:domain rdf:resource="http://www.sdm.upc.es/#Publication"/>
+  <rdf:Property rdf:about="http://www.sdm.upc.es/#Belongs_to_conf">
+    <rdfs:label xml:lang="en">Conference Proceeding belongs to a conference</rdfs:label>
+    <rdfs:range rdf:resource="http://www.sdm.upc.es/#Conference"/>
+    <rdfs:domain rdf:resource="http://www.sdm.upc.es/#Conference_proceeding"/>
   </rdf:Property>
   <rdf:Property rdf:about="http://www.sdm.upc.es/#area_name">
     <rdfs:label xml:lang="en">Area has a name</rdfs:label>
@@ -141,10 +148,10 @@
     <rdfs:range rdf:resource="http://www.sdm.upc.es/#Publication"/>
     <rdfs:domain rdf:resource="http://www.sdm.upc.es/#Paper"/>
   </rdf:Property>
-  <rdf:Property rdf:about="http://www.sdm.upc.es/#publication_type">
-    <rdfs:label xml:lang="en">Publication has a type</rdfs:label>
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    <rdfs:domain rdf:resource="http://www.sdm.upc.es/#Publication"/>
+  <rdf:Property rdf:about="http://www.sdm.upc.es/#Belongs_to_jour">
+    <rdfs:label xml:lang="en">Journal Volume belongs to a journal</rdfs:label>
+    <rdfs:range rdf:resource="http://www.sdm.upc.es/#Journal"/>
+    <rdfs:domain rdf:resource="http://www.sdm.upc.es/#Journal_volume"/>
   </rdf:Property>
   <rdf:Property rdf:about="http://www.sdm.upc.es/#Heads_conference">
     <rdfs:label xml:lang="en">Chair heads a conference</rdfs:label>

@@ -27,7 +27,6 @@ public class ABOX {
         OntModel model = ModelFactory.createOntologyModel(OntModelSpec.RDFS_MEM_RDFS_INF, m);
 
         // Ontology Classes
-        OntClass personOntClass = model.getOntClass(Constants.BASE_URI.concat("Person"));
         OntClass authorOntClass = model.getOntClass(Constants.BASE_URI.concat("Author"));
         OntClass chairOntClass = model.getOntClass(Constants.BASE_URI.concat("Chair"));
         OntClass editorOntClass = model.getOntClass(Constants.BASE_URI.concat("Editor"));
@@ -42,7 +41,8 @@ public class ABOX {
         OntClass expertGroupOntClass = model.getOntClass(Constants.BASE_URI.concat("Expert_group"));
         OntClass regularConfOntClass = model.getOntClass(Constants.BASE_URI.concat("Regular_conf"));
         OntClass reviewOntClass = model.getOntClass(Constants.BASE_URI.concat("Review"));
-        OntClass publicationOntClass = model.getOntClass(Constants.BASE_URI.concat("Publication"));
+        OntClass confProceedingOntClass = model.getOntClass(Constants.BASE_URI.concat("Conference_proceeding"));
+        OntClass jourVolumeOntClass = model.getOntClass(Constants.BASE_URI.concat("Journal_volume"));
         OntClass areaOntClass = model.getOntClass(Constants.BASE_URI.concat("Area"));
 
         // Properties ontology
@@ -51,7 +51,8 @@ public class ABOX {
         OntProperty relatedToOntProperty = model.getOntProperty(Constants.BASE_URI.concat("Related_to"));
         OntProperty submittedToOntProperty = model.getOntProperty(Constants.BASE_URI.concat("Submitted_to"));
         OntProperty acceptedAsOntProperty = model.getOntProperty(Constants.BASE_URI.concat("Accepted_as"));
-        OntProperty belongsToOntProperty = model.getOntProperty(Constants.BASE_URI.concat("Belongs_to"));
+        OntProperty belongsToConfOntProperty = model.getOntProperty(Constants.BASE_URI.concat("Belongs_to_conf"));
+        OntProperty belongsToJourOntProperty = model.getOntProperty(Constants.BASE_URI.concat("Belongs_to_jour"));
         OntProperty headsJournalOntProperty = model.getOntProperty(Constants.BASE_URI.concat("Heads_journal"));
         OntProperty headsConferenceOntProperty = model.getOntProperty(Constants.BASE_URI.concat("Heads_conference"));
         OntProperty assignedByEditorOntProperty = model.getOntProperty(Constants.BASE_URI.concat("Assigned_by_editor"));
@@ -68,7 +69,6 @@ public class ABOX {
         OntProperty venueNameOntProperty = model.getOntProperty(Constants.BASE_URI.concat("venue_name"));
         OntProperty venueCityOntProperty = model.getOntProperty(Constants.BASE_URI.concat("venue_city"));
         OntProperty publicationNameOntProperty = model.getOntProperty(Constants.BASE_URI.concat("publication_name"));
-        OntProperty publicationTypeOntProperty = model.getOntProperty(Constants.BASE_URI.concat("publication_type"));
         OntProperty publicationYearOntProperty = model.getOntProperty(Constants.BASE_URI.concat("publication_year"));
         OntProperty personNameOntProperty = model.getOntProperty(Constants.BASE_URI.concat("person_name"));
         OntProperty decisionOntProperty = model.getOntProperty(Constants.BASE_URI.concat("decision"));
@@ -98,7 +98,6 @@ public class ABOX {
             String reviewer1Str = URLEncoder.encode(record.get("reviewer1"));
             String reviewer2Str = URLEncoder.encode(record.get("reviewer2"));
             String decisionStr = Utils.clean_str_buffer(record.get("decision"));
-            String pubTypeStr = URLEncoder.encode(record.get("pub_type"));
             String paperTypeStr = Utils.clean_str_buffer(record.get("paper_type"));
 
             Individual paperIndividual = null;
@@ -117,11 +116,18 @@ public class ABOX {
 
             Individual publicationIndividual = null;
             if (decisionStr.equals(Utils.clean_str_buffer("ACCEPTED"))) {
-                publicationIndividual = publicationOntClass.createIndividual(Constants.BASE_URI.concat(publicationStr));
-                publicationIndividual.addProperty(publicationNameOntProperty, publicationStr);
-                publicationIndividual.addProperty(publicationTypeOntProperty, pubTypeStr);
-                publicationIndividual.addProperty(publicationYearOntProperty, yearStr);
-                paperIndividual.addProperty(acceptedAsOntProperty, publicationIndividual);
+                if(venueTypeStr.equals(Utils.clean_str_buffer("Conference"))) {
+                    publicationIndividual = confProceedingOntClass.createIndividual(Constants.BASE_URI.concat(publicationStr));
+                    publicationIndividual.addProperty(publicationNameOntProperty, publicationStr);
+                    publicationIndividual.addProperty(publicationYearOntProperty, yearStr);
+                    paperIndividual.addProperty(acceptedAsOntProperty, publicationIndividual);
+                }
+                else{
+                    publicationIndividual = jourVolumeOntClass.createIndividual(Constants.BASE_URI.concat(publicationStr));
+                    publicationIndividual.addProperty(publicationNameOntProperty, publicationStr);
+                    publicationIndividual.addProperty(publicationYearOntProperty, yearStr);
+                    paperIndividual.addProperty(acceptedAsOntProperty, publicationIndividual);
+                }
             }
 
             Individual venueIndividual = null;
@@ -143,7 +149,12 @@ public class ABOX {
 
             paperIndividual.addProperty(submittedToOntProperty, venueIndividual);
             if (publicationIndividual != null) {
-                publicationIndividual.addProperty(belongsToOntProperty, venueIndividual);
+                if(venueTypeStr.equals(Utils.clean_str_buffer("Conference"))) {
+                    publicationIndividual.addProperty(belongsToConfOntProperty, venueIndividual);
+                }
+                else{
+                    publicationIndividual.addProperty(belongsToJourOntProperty, venueIndividual);
+                }
             }
 
             if (keywordStr.contains("|")) {
@@ -169,7 +180,6 @@ public class ABOX {
             if (authorStr.contains("|")) {
                 String[] authors = authorStr.split("\\|");
                 for (String author : authors) {
-                    System.out.println(author.toString());
                     Individual authorIndidual = authorOntClass.createIndividual(Constants.BASE_URI.concat(URLEncoder.encode(author)));
                     authorIndidual.addProperty(personNameOntProperty, URLEncoder.encode(author));
                     authorIndidual.addProperty(writesOntProperty, paperIndividual);
