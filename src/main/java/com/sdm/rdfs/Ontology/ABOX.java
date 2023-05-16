@@ -82,7 +82,7 @@ public class ABOX {
 
             String venueStr = URLEncoder.encode(record.get("venue"));
             String publicationStr = URLEncoder.encode(record.get("publication"));
-            String keywordStr = URLEncoder.encode(record.get("keyword"));
+            String keywordStr = Utils.clean_str_buffer(record.get("keyword"));
             String authorStr = Utils.clean_str_buffer(record.get("author"));
             String titleStr = URLEncoder.encode(record.get("title"));
             String yearStr = URLEncoder.encode(record.get("year"));
@@ -154,13 +154,19 @@ public class ABOX {
                 }
             }
 
-            if (keywordStr.contains("|")) {
-                String[] keywords = keywordStr.split("\\|");
+            if (keywordStr.contains(";")) {
+                String[] keywords = keywordStr.split(";");
                 for (String keyword : keywords) {
                     Individual areaIndividual = areaOntClass.createIndividual(Constants.BASE_URI.concat(keyword));
                     areaIndividual.addProperty(areaNameOntProperty, URLEncoder.encode(keyword));
                     venueIndividual.addProperty(relatedToOntProperty, areaIndividual);
                     paperIndividual.addProperty(hasAreaOntProperty, areaIndividual);
+//                    OntClass __area = model.createClass( Constants.BASE_URI.concat(Constants.BASE_URI.concat(URLEncoder.encode(keyword))) );
+//                    areaOntClass.addSubClass(__area);
+//                    Individual __areaIndividula = __area.createIndividual();
+//                    __areaIndividula.addProperty(areaNameOntProperty, URLEncoder.encode(keyword));
+//                    venueIndividual.addProperty(relatedToOntProperty, __areaIndividula);
+//                    paperIndividual.addProperty(hasAreaOntProperty, __areaIndividula);
                 }
             }
 
@@ -174,8 +180,8 @@ public class ABOX {
                 personIndividual.addProperty(personNameOntProperty, headStr);
                 personIndividual.addProperty(headsJournalOntProperty, venueIndividual);
             }
-            if (authorStr.contains("|")) {
-                String[] authors = authorStr.split("\\|");
+            if (authorStr.contains(";")) {
+                String[] authors = authorStr.split(";");
                 for (String author : authors) {
                     Individual authorIndidual = authorOntClass.createIndividual(Constants.BASE_URI.concat(URLEncoder.encode(author)));
                     authorIndidual.addProperty(personNameOntProperty, URLEncoder.encode(author));
@@ -193,24 +199,26 @@ public class ABOX {
             reviewIndividual.addProperty(reviewTextOntProperty, reviewTextStr);
             reviewIndividual.addProperty(approvesOntProperty, paperIndividual);
 
+            Individual reviewer1Individual = reviewerOntClass.createIndividual(Constants.BASE_URI.concat(reviewer1Str));
+            reviewer1Individual.addProperty(personNameOntProperty, reviewer1Str);
+            reviewer1Individual.addProperty(assignedToOntProperty, paperIndividual);
+            reviewer1Individual.addProperty(providesOntProperty, reviewIndividual);
+            Individual reviewer2Individual = reviewerOntClass.createIndividual(Constants.BASE_URI.concat(reviewer2Str));
+            reviewer2Individual.addProperty(personNameOntProperty, reviewer2Str);
+            reviewer2Individual.addProperty(assignedToOntProperty, paperIndividual);
+            reviewer2Individual.addProperty(providesOntProperty, reviewIndividual);
+
             if (venueTypeStr.equals(Utils.clean_str_buffer("Conference"))) {
-                Individual reviewer1Individual = reviewerOntClass.createIndividual(Constants.BASE_URI.concat(reviewer1Str));
-                reviewer1Individual.addProperty(personNameOntProperty, reviewer1Str);
-                reviewer1Individual.addProperty(assignedToOntProperty, paperIndividual);
-                reviewer1Individual.addProperty(providesOntProperty, reviewIndividual);
                 personIndividual.addProperty(assignedByChairOntProperty, reviewer1Individual);
+                personIndividual.addProperty(assignedByChairOntProperty, reviewer2Individual);
             } else {
-                Individual reviewer2Individual = reviewerOntClass.createIndividual(Constants.BASE_URI.concat(reviewer2Str));
-                reviewer2Individual.addProperty(personNameOntProperty, reviewer1Str);
-                reviewer2Individual.addProperty(assignedToOntProperty, paperIndividual);
-                reviewer2Individual.addProperty(providesOntProperty, reviewIndividual);
+                personIndividual.addProperty(assignedByEditorOntProperty, reviewer1Individual);
                 personIndividual.addProperty(assignedByEditorOntProperty, reviewer2Individual);
             }
 
         }
         System.out.println("ABox Model Saved Successfully");
         System.out.println("Validating ABOX model ..........");
-
         Reasoner reasoner = ReasonerRegistry.getOWLReasoner();
         reasoner.bindSchema(model);
         InfModel infModel = ModelFactory.createInfModel(reasoner, model);
