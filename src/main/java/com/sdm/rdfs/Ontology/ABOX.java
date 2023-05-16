@@ -160,12 +160,6 @@ public class ABOX {
                     areaIndividual.addProperty(areaNameOntProperty, URLEncoder.encode(keyword));
                     venueIndividual.addProperty(relatedToOntProperty, areaIndividual);
                     paperIndividual.addProperty(hasAreaOntProperty, areaIndividual);
-//                    OntClass __area = model.createClass( Constants.BASE_URI.concat(Constants.BASE_URI.concat(URLEncoder.encode(keyword))) );
-//                    areaOntClass.addSubClass(__area);
-//                    Individual __areaIndividula = __area.createIndividual();
-//                    __areaIndividula.addProperty(areaNameOntProperty, URLEncoder.encode(keyword));
-//                    venueIndividual.addProperty(relatedToOntProperty, __areaIndividula);
-//                    paperIndividual.addProperty(hasAreaOntProperty, __areaIndividula);
                 }
             }
 
