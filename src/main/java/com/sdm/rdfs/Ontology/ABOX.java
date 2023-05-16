@@ -126,7 +126,6 @@ public class ABOX {
                     paperIndividual.addProperty(acceptedAsOntProperty, publicationIndividual);
                 }
             }
-
             Individual venueIndividual = null;
             if (venueTypeStr.equals(Utils.clean_str_buffer("Conference"))) {
                 if (confTypeStr.equals(Utils.clean_str_buffer("Expert Group"))) {
@@ -157,7 +156,7 @@ public class ABOX {
             if (keywordStr.contains(";")) {
                 String[] keywords = keywordStr.split(";");
                 for (String keyword : keywords) {
-                    Individual areaIndividual = areaOntClass.createIndividual(Constants.BASE_URI.concat(keyword));
+                    Individual areaIndividual = areaOntClass.createIndividual(Constants.BASE_URI.concat(URLEncoder.encode(keyword)));
                     areaIndividual.addProperty(areaNameOntProperty, URLEncoder.encode(keyword));
                     venueIndividual.addProperty(relatedToOntProperty, areaIndividual);
                     paperIndividual.addProperty(hasAreaOntProperty, areaIndividual);
